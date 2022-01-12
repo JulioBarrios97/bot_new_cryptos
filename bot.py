@@ -40,7 +40,8 @@ while 1:
   currentLen = len(currentCryptos)
   
   if prevLen < currentLen:
-    print("New Coin")
+#     print("New Coin")
+    print("Nueva Coin Detectada:", hour)  # Muestra fecha y hora
     newCoin = prevLen
     break
   print("Buscando nuevas Coin...")
