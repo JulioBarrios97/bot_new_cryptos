@@ -1,6 +1,8 @@
 from binance.client import Client
 from binance.enums import *
 import time
+from datetime import date
+from datetime import datetime
 
 client = Client(config.API_KEY, config.API_SECRET, tld='com')
 print("Ingrese la cantidad de capital que desee utilizar por operación (De no tener una moneda utilice 0)")
