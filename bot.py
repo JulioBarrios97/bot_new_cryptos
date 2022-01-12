@@ -4,6 +4,8 @@ import time
 from datetime import date
 from datetime import datetime
 
+hour = datetime.now()
+
 client = Client(config.API_KEY, config.API_SECRET, tld='com')
 print("Ingrese la cantidad de capital que desee utilizar por operación (De no tener una moneda utilice 0)")
 numBTC = int(input("Minimo 0.0013 BTC: "))
