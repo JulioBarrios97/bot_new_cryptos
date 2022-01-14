@@ -1,3 +1,4 @@
+import config
 from binance.client import Client
 from binance.enums import *
 import time
@@ -7,12 +8,12 @@ from datetime import datetime
 hour = datetime.now()
 
 client = Client(config.API_KEY, config.API_SECRET, tld='com')
-print("Ingrese la cantidad de capital que desee utilizar por operación (De no tener una moneda utilice 0)")
-numBTC = int(input("Minimo 0.0013 BTC: "))
-numETH = int(input("Minimo 0.03 ETH: "))
-numUSDT = int(input("Minimo 20 USDT: "))
-numBUSD = int(input("Minimo 20 BUSD: "))
-numBNB = int(input("Minimo 0.7 BNB: "))
+print("Ingrese la cantidad de capital que desee utilizar por operación")
+# numBTC = int(input("Minimo 0.0013 BTC: "))
+# numETH = int(input("Minimo 0.03 ETH: "))
+# numUSDT = int(input("Minimo 20 USDT: "))
+numBUSD = float(input("Minimo 20 BUSD: "))
+# numBNB = int(input("Minimo 0.7 BNB: "))
 
 
 #FUNCTIONS
@@ -44,27 +45,29 @@ while 1:
   currentLen = len(currentCryptos)
   
   if prevLen < currentLen:
-#     print("New Coin")
+    # print("New Coin")
     print("Nueva Coin Detectada:", hour)  # Muestra fecha y hora
+    # print(tick[i].get('symbol'))
     newCoin = prevLen
     break
   print("Buscando nuevas Coin...")
+  # print(hour.strftime("%d/%m/%Y %H:%M:%S"))
   # print(prevLen)
   
 for i in range (newCoin , currentLen):
   amount = 0
   symbol_to_buy = currentCryptos[i].get('symbol')
   price_to_buy = currentCryptos[i].get('price')
-  if symbol_to_buy[-3:] == 'BTC':
-    amount = numBTC
-  if symbol_to_buy[-3:] == 'ETH':
-    amount = numETH
-  if symbol_to_buy[-4:] == 'USDT':
-    amount = numUSDT
+  # if symbol_to_buy[-3:] == 'BTC':
+  #   amount = numBTC
+  # if symbol_to_buy[-3:] == 'ETH':
+  #   amount = numETH
+  # if symbol_to_buy[-4:] == 'USDT':
+  #   amount = numUSDT
   if symbol_to_buy[-4:] == 'BUSD':
     amount = numBUSD
-  if symbol_to_buy[-3:] == 'BNB':
-    amount = numBNB
+  # if symbol_to_buy[-3:] == 'BNB':
+  #   amount = numBNB
 
   if amount == 0:
     continue
