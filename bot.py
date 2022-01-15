@@ -1,3 +1,4 @@
+from config import *
 import config
 from binance.client import Client
 from binance.enums import *
@@ -8,13 +9,6 @@ from datetime import datetime
 hour = datetime.now()
 
 client = Client(config.API_KEY, config.API_SECRET, tld='com')
-print("Ingrese la cantidad de capital que desee utilizar por operación")
-# numBTC = int(input("Minimo 0.0013 BTC: "))
-# numETH = int(input("Minimo 0.03 ETH: "))
-# numUSDT = int(input("Minimo 20 USDT: "))
-numBUSD = float(input("Minimo 20 BUSD: "))
-# numBNB = int(input("Minimo 0.7 BNB: "))
-
 
 #FUNCTIONS
 def truncate(number, digits) -> float:
@@ -83,7 +77,7 @@ for i in range (newCoin , currentLen):
     orderOCO = client.order_oco_sell(
                         symbol = symbol_to_buy,
                         quantity = quantity_to_buy,
-                        price = truncate( price_to_buy *1.1,3),
+                        price = truncate( price_to_buy *take_profit,3),
                         stopPrice = truncate( price_to_buy *0.98,3),
                         stopLimitPrice = truncate( price_to_buy *0.975,3),
                         stopLimitTimeInForce = 'GTC'
